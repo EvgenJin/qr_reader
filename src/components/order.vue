@@ -1,5 +1,6 @@
 <template>
   <v-content>
+  <h1>{{user}}</h1>
   <v-card class="mx-auto" outlined>
     <v-card-title>Заказ {{order.id}}</v-card-title>
     <v-list-item>
@@ -25,6 +26,7 @@
         <th class="text-center">Цена</th>
       </tr>
       <tbody>
+
       <tr v-for="cont in order.orders_content" :key="cont.id">
         <td>{{cont.id}}</td>
         <td>{{cont.title}}</td>
@@ -43,6 +45,7 @@
     export default {
         name: "order",
         data: () => ({
+            user: null,
             order: {
                 orders_content: []
             },
@@ -53,6 +56,7 @@
         },
         methods: {
             initialize() {
+                this.user = this.$store.getters.LOGIN;
                 // this.$route.params.id = 1;
                 if (typeof(this.$route.params.id) !== 'undefined') {
                    let id = this.$route.params.id;

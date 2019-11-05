@@ -1,6 +1,35 @@
 <template>
-  <div id="app">
+<!--  <div id="app">-->
     <v-app>
+      <v-navigation-drawer
+        v-model="drawer"
+        app
+      >
+        <v-list dense>
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Home</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon>mdi-contact-mail</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Contact</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+      <v-app-bar
+        app
+      >
+        <v-app-bar-nav-icon style="color: black" @click.stop="drawer = !drawer" />
+        <v-toolbar-title>Application</v-toolbar-title>
+      </v-app-bar>
       <v-content>
         <v-container fluid>
           <router-view/>
@@ -8,22 +37,26 @@
     <!-- <img src="./assets/logo.png"> -->
       </v-content>
     </v-app>
-  </div>
+<!--  </div>-->
 </template>
 
 <script>
 export default {
   name: 'App',
+  data: () => ({
+      drawer: null,
+  })
+
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
+  /*-webkit-font-smoothing: antialiased;*/
+  /*-moz-osx-font-smoothing: grayscale;*/
+  /*text-align: center;*/
+  /*color: #2c3e50;*/
+
 }
 </style>

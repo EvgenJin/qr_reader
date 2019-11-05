@@ -2,12 +2,14 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+
 import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import VueQrcodeReader from "vue-qrcode-reader";
-Vue.use(VueQrcodeReader);
+import { store } from './store/store'
 
+Vue.use(VueQrcodeReader);
 Vue.use(Vuetify);
 
 const opts = {};
@@ -18,7 +20,12 @@ Vue.config.productionTip = false;
 new Vue({
   el: '#app',
   router,
-  vuetify: new Vuetify(),
+  store,
+  vuetify: new Vuetify({
+    icons: {
+      iconfont: 'mdi', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4'
+    },
+  }),
   components: { App },
   template: '<App/>'
 });
